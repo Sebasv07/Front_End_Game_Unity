@@ -1,0 +1,40 @@
+﻿@model WEB_GAME.Models.WeatherConditionViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Weather Conditions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit WeatherConditions</h1>
+        <form asp-action="Edit" method="post">
+
+            <div class="form-group">
+                <label asp-for="weatherContitionId" class="control-label" style="display: none;"></label>
+                <input asp-for="weatherContitionId" class="form-control" readonly style="display: none;" />
+                <span asp-validation-for="weatherContitionId" class="text-danger" style="display: none;"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="typeWeather" class="control-label"></label>
+                <input asp-for="typeWeather" class="form-control" readonly />
+                <span asp-validation-for="typeWeather" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                <a href="@Url.Action("Index", "WeatherConditions")" class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+        </form>
+    </div>
+</body>
+</html>

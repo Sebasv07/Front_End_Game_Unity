@@ -1,0 +1,46 @@
+﻿@model WEB_GAME.Models.TimeCollectionTracksViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create Time Collection Track</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Time Collection Track</h1>
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="detectiveId" class="control-label"></label>
+                <input asp-for="detectiveId" class="form-control" />
+                <span asp-validation-for="detectiveId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gameId" class="control-label"></label>
+                <input asp-for="gameId" class="form-control" />
+                <span asp-validation-for="gameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="detectiveCluesId" class="control-label"></label>
+                <input asp-for="detectiveCluesId" class="form-control" />
+                <span asp-validation-for="detectiveCluesId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="timeClues" class="control-label"></label>
+                <input asp-for="timeClues" class="form-control" />
+                <span asp-validation-for="timeClues" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none;">
+                <label asp-for="active" class="control-label"></label>
+                <input asp-for="active" type="hidden" value="true" />
+                <span asp-validation-for="active" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a href="@Url.Action("Index", "TimeCollectionTracks")" class="btn btn-secondary">Back</a>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

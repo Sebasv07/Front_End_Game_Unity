@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WEB_GAME.Models.TimeCollectionTracksViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Time Collection Tracks List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Time Collection Tracks</h1>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <form asp-action="Index" method="get" class="form-inline">
+                    <input type="text" name="searchString" class="form-control mr-2" placeholder="Search by game ID..." />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+            <div class="col-md-8 text-right">
+                <a href="@Url.Action("Create")" class="btn btn-success">Create New</a>
+                <a href="@Url.Action("Index", "MainMenu")" class="btn btn-secondary">Back to Main Menu</a>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Detective ID</th>
+                    <th>Game ID</th>
+                    <th>Detective Clues ID</th>
+                    <th>Time Clues</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var track in Model)
+                {
+                    <tr>
+                        <td>@track.timeCollectionTracksId</td>
+                        <td>@track.detectiveId</td>
+                        <td>@track.gameId</td>
+                        <td>@track.detectiveCluesId</td>
+                        <td>@track.timeClues</td>
+                        <td>@track.active</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = track.timeCollectionTracksId })" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="@Url.Action("Deactivate", new { id = track.timeCollectionTracksId })" class="btn btn-danger btn-sm">Deactivate</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@model WEB_GAME.Models.SoilQualityViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Soil Quality</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Soil Quality</h1>
+        <form asp-action="Edit" method="post">
+            <div class="form-group" style="display: none;">
+                <label asp-for="soilQualityId" class="control-label"></label>
+                <input asp-for="soilQualityId" class="form-control" readonly />
+                <span asp-validation-for="soilQualityId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="typeSoilQuality" class="control-label"></label>
+                <input asp-for="typeSoilQuality" class="form-control" />
+                <span asp-validation-for="typeSoilQuality" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="nutrientLevel" class="control-label"></label>
+                <input asp-for="nutrientLevel" class="form-control" />
+                <span asp-validation-for="nutrientLevel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Ph" class="control-label"></label>
+                <input asp-for="Ph" class="form-control" />
+                <span asp-validation-for="Ph" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

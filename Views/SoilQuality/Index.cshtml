@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WEB_GAME.Models.SoilQualityViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Soil Quality List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Soil Quality</h1>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <form asp-action="Index" method="get" class="form-inline">
+                    <input type="text" name="searchString" class="form-control mr-2" placeholder="Search by soil quality type..." />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+            <div class="col-md-8 text-right">
+                <a href="@Url.Action("Create")" class="btn btn-success">Create New</a>
+                <a href="@Url.Action("Index", "MainMenu")" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Type of Soil Quality</th>
+                    <th>Nutrient Level</th>
+                    <th>PH</th>
+                    <th>Description</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var soilQuality in Model)
+                {
+                    <tr>
+                        <td>@soilQuality.typeSoilQuality</td>
+                        <td>@soilQuality.nutrientLevel</td>
+                        <td>@soilQuality.Ph</td>
+                        <td>@soilQuality.description</td>
+                        <td>@(soilQuality.active ? "Yes" : "No")</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "SoilQuality", new { id = soilQuality.soilQualityId })" class="btn btn-warning btn-sm">Edit</a>
+                            <!-- Add deactivate action if needed -->
+                            <!-- <a href="@Url.Action("Deactivate", "SoilQuality", new { id = soilQuality.soilQualityId })" class="btn btn-danger btn-sm">Deactivate</a> -->
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
